@@ -218,11 +218,6 @@
             }
           }
         }
-      },
-      "oauth2ClientSecret": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "Authorization"
       }
     },
     "schemas": {
@@ -63438,7 +63433,7 @@
         "x-release-status": "PUBLIC",
         "security": [
           {
-            "oauth2": null
+            "oauth2": []
           }
         ],
         "parameters": [],
@@ -80286,7 +80281,17 @@
             ]
           }
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "vendor_id",
+            "description": "ID of the [Vendor](entity:Vendor) to update.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
         "requestBody": {
           "required": true,
           "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
