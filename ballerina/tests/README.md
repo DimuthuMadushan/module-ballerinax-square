@@ -17,22 +17,22 @@ There are two test environments for running the Square connector tests. The defa
 
 ## Running the tests
 
-1. Set the environment variables below. They are read only when `IS_LIVE_SERVER` is `true`.
+### Against the mock server
 
-    ```bash
-    export IS_LIVE_SERVER=true
-    export SQUARE_ACCESS_TOKEN=<access-token>
-    export SQUARE_LOCATION_ID=<location-id>
-    ```
+No credentials are needed. Make sure `IS_LIVE_SERVER` is unset or not `true`:
 
-2. Run the tests:
+```bash
+bal test --groups mock_tests
+```
 
-    ```bash
-    # Against the mock server
-    bal test --groups mock_tests
+### Against the Square Sandbox
 
-    # Against the Square Sandbox
-    bal test --groups live_tests
-    ```
+Set `IS_LIVE_SERVER=true` together with the access token and location ID. Only this run talks to the Sandbox:
+
+```bash
+IS_LIVE_SERVER=true SQUARE_ACCESS_TOKEN=<access-token> SQUARE_LOCATION_ID=<location-id> bal test --groups live_tests
+```
+
+Each test creates the customers, orders, payments and invoices it needs and uses unique idempotency keys, so it can be rerun. The Sandbox payments use the test card nonce `cnon:card-nonce-ok`.
 
 The mock server covers 25 operations across customers, locations, payments, orders, invoices, the catalog and cards. The suite has one test per mocked operation.

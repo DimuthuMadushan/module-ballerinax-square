@@ -1,4 +1,4 @@
-_Author_:  [DimuthuMadushan](https://github.com/DimuthuMadushan) \
+_Author_:  @DimuthuMadushan \
 _Created_: 2026/10/02 \
 _Updated_: 2026/10/02 \
 _Edition_: Swan Lake
@@ -73,5 +73,3 @@ The following command was used to generate the Ballerina client from the OpenAPI
 ```bash
 bal openapi -i docs/spec/aligned_ballerina_openapi.json --mode client --license docs/license.txt --client-methods remote -o ballerina
 ```
-
-Note: The license year is hardcoded to 2024, change if necessary.
